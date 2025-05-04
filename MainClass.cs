@@ -14,12 +14,14 @@ using System.Text;
 using System.Threading.Tasks;
 // Provides basic classes for data access, like DataTable, DataSet, etc
 using System.Data;
+using System.Collections;
+using System.Windows.Forms;
 
 // Declares a namespace called ServeSync to logically group related classes
 namespace ServeSync
 {
     // Defines an internal class MainClass (accessible only within the same assembly)
-    internal class MainClass
+    class MainClass
     {
         // Defines a static, read-only connection string used to connect to the SQL Server instance SQLEXPRESS on the machine KASUNMENDIS, using the sa (System Admin) login
         public static readonly string con_string = "Data Source=KASUNMENDIS\\SQLEXPRESS; Initial Catalog=ServeSync; Persist Security Info=True; User ID=sa; Password=123;";
@@ -60,5 +62,52 @@ namespace ServeSync
             private set { user = value; }
         }
 
+        // Method for CRUD operation
+        public static int SQL(string qry, Hashtable ht)
+        {
+            int res = 0;
+            try
+            {
+                SqlCommand cmd = new SqlCommand(qry, con);
+                cmd.CommandType = CommandType.Text;
+
+                foreach(DictionaryEntry item in ht)
+                {
+                    cmd.Parameters.AddWithValue(item.Key.ToString(), item.Value);
+                }
+                if(con.State == ConnectionState.Closed){ con.Open(); }
+                res = cmd.ExecuteNonQuery();
+                if (con.State == ConnectionState.Open) { con.Close(); }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                con.Close();
+            }
+            return res;
+        }
+        // For loading data from database
+        public static void LoadData(string qry, DataGridView gv, ListBox lb)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(qry, con);
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                for (int i=0; i < lb.Items.Count; i++)
+                {
+                    string colNam1 = ((DataGridViewColumn)lb.Items[i]).Name;
+                    gv.Columns[colNam1].DataPropertyName = dt.Columns[i].ToString();
+                }
+                gv.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                con.Close();
+            }
+        }
     }
 }

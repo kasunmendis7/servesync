@@ -4,111 +4,6 @@
         <name>Microsoft.Bcl.Cryptography</name>
     </assembly>
     <members>
-        <member name="M:Interop.BCrypt.Emit(System.Byte[],System.Int32@,System.Byte[])">
-            <summary>
-                Append "value" to the data already in blob.
-            </summary>
-        </member>
-        <member name="M:Interop.BCrypt.EmitByte(System.Byte[],System.Int32@,System.Byte,System.Int32)">
-            <summary>
-                Append "value" to the data already in blob.
-            </summary>
-        </member>
-        <member name="M:Interop.BCrypt.EmitBigEndian(System.Byte[],System.Int32@,System.Int32)">
-            <summary>
-                Append "value" in big Endian format to the data already in blob.
-            </summary>
-        </member>
-        <member name="M:Interop.BCrypt.Consume(System.Byte[],System.Int32@,System.Int32)">
-            <summary>
-                Peel off the next "count" bytes in blob and return them in a byte array.
-            </summary>
-        </member>
-        <member name="M:Interop.BCrypt.Consume(System.ReadOnlySpan{System.Byte},System.Int32@,System.Int32)">
-            <summary>
-                Peel off the next "count" bytes in blob and return them in a byte array.
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.KeyBlobMagicNumber">
-            <summary>
-                Magic numbers identifying blob types
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.KeyBlobType">
-            <summary>
-                Well known key blob types
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.BCRYPT_RSAKEY_BLOB">
-            <summary>
-                The BCRYPT_RSAKEY_BLOB structure is used as a header for an RSA public key or private key BLOB in memory.
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.BCRYPT_DSA_KEY_BLOB">
-            <summary>
-                The BCRYPT_DSA_KEY_BLOB structure is used as a v1 header for a DSA public key or private key BLOB in memory.
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.BCRYPT_DSA_KEY_BLOB_V2">
-            <summary>
-                The BCRYPT_DSA_KEY_BLOB structure is used as a v2 header for a DSA public key or private key BLOB in memory.
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.BCRYPT_ECCKEY_BLOB">
-            <summary>
-                The BCRYPT_ECCKEY_BLOB structure is used as a header for an ECC public key or private key BLOB in memory.
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.ECC_CURVE_TYPE_ENUM">
-            <summary>
-                Represents the type of curve.
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.ECC_CURVE_ALG_ID_ENUM">
-            <summary>
-                Represents the algorithm that was used with Seed to generate A and B.
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.BCRYPT_ECCFULLKEY_BLOB">
-            <summary>
-                Used as a header to curve parameters including the public and potentially private key.
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.CngBufferDescriptors">
-            <summary>
-                NCrypt or BCrypt buffer descriptors
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.BCryptBuffer">
-            <summary>
-                BCrypt buffer
-            </summary>
-        </member>
-        <member name="F:Interop.BCrypt.BCRYPTBUFFER_VERSION">
-            <summary>
-                The version of BCryptBuffer
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.BCryptBufferDesc">
-            <summary>
-                Contains a set of generic CNG buffers.
-            </summary>
-        </member>
-        <member name="F:Interop.BCrypt.BCRYPT_ECC_PARAMETER_HEADER_V1">
-            <summary>
-                The version of BCRYPT_ECC_PARAMETER_HEADER
-            </summary>
-        </member>
-        <member name="T:Interop.BCrypt.BCRYPT_ECC_PARAMETER_HEADER">
-            <summary>
-                Used as a header to curve parameters.
-            </summary>
-        </member>
-        <member name="M:Interop.Kernel32.GetMessage(System.Int32)">
-            <summary>
-                Returns a string message for the specified Win32 error code.
-            </summary>
-        </member>
         <member name="T:System.Security.Cryptography.SP800108HmacCounterKdf">
             <summary>
               NIST SP 800-108 HMAC CTR Key-Based Key Derivation (KBKDF)
@@ -510,17 +405,730 @@
               Releases all resources used by the current instance of <see cref="T:System.Security.Cryptography.SP800108HmacCounterKdf"/>.
             </summary>
         </member>
-        <member name="P:System.SR.ArgumentOutOfRange_NeedNonNegNum">
-            <summary>Non-negative number required.</summary>
+        <member name="T:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits">
+            <summary>
+              Represents a set of constraints to apply when loading PKCS#12/PFX contents.
+            </summary>
         </member>
-        <member name="P:System.SR.ArgumentOutOfRange_KOut_Too_Large">
-            <summary>The number of bytes requested is too large. The number of bytes produced by SP800108HmacCounterKdf cannot exceed 536,870,911 bytes.</summary>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults">
+            <summary>
+              Gets a shared reference to the default loader limits.
+            </summary>
+            <remarks>
+              The singleton instance returned from this property is equivalent to an
+              instance produced via the default constructor, except the properties
+              prohibit reassignment.  As with the default constructor, the individual
+              property values may change over time.
+            </remarks>
+            <value>A shared reference to the default loader limits.</value>
+            <seealso cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.IsReadOnly" />
         </member>
-        <member name="P:System.SR.Argument_EmptyString">
-            <summary>The value cannot be an empty string.</summary>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.DangerousNoLimits">
+            <summary>
+              Gets a shared reference to loader limits that indicate no
+              filtering or restrictions of the contents should be applied
+              before sending them to the underlying system loader.
+            </summary>
+            <value>
+              A shared reference to loader limits that indicate no
+              filtering or restrictions of the contents should be applied
+              before sending them to the underlying system loader.
+            </value>
+            <remarks>
+              <para>
+                The system loader may have its own limits where only part
+                of the contents are respected, or where the load is rejected.
+                Using this set of limits only affects the .NET layer of filtering.
+              </para>
+              <para>
+                The <see cref="T:System.Security.Cryptography.X509Certificates.X509CertificateLoader" /> class checks for reference
+                equality to this property to determine if filtering should be bypassed.
+                Making a new Pkcs12LoaderLimits value that has all of the same property
+                values may give different results for certain inputs.
+              </para>
+            </remarks>
         </member>
-        <member name="P:System.SR.Cryptography_UnknownHashAlgorithm">
-            <summary>'{0}' is not a known hash algorithm.</summary>
+        <member name="M:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.#ctor">
+            <summary>
+              Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits"/> class
+              with default values.
+            </summary>
+            <remarks>
+              The default values for each property on a default instance of this class
+              are chosen as a compromise between maximizing compatibility and minimizing
+              "nuisance" work.  The defaults for any given property may vary over time.
+            </remarks>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.#ctor(System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits"/> class
+              by copying the values from another instance.
+            </summary>
+            <param name="copyFrom">The instance to copy the values from.</param>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="copyFrom"/> is <see langword="null" />.
+            </exception>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.IsReadOnly">
+            <summary>
+              Gets a value indicating whether the instance is read-only.
+            </summary>
+            <value>
+              <see langword="true" /> if the instance is read-only; otherwise, <see langword="false" />.
+            </value>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.MakeReadOnly">
+            <summary>
+              Makes the <see cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits"/> instance read-only.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.MacIterationLimit">
+            <summary>
+              Gets or sets the iteration limit for the MAC calculation.
+            </summary>
+            <value>The iteration limit for the MAC calculation, or <see langword="null" /> for no limit.</value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.IndividualKdfIterationLimit">
+            <summary>
+              Gets or sets the iteration limit for the individual Key Derivation Function (KDF) calculations.
+            </summary>
+            <value>
+              The iteration limit for the individual Key Derivation Function (KDF) calculations,
+              or <see langword="null" /> for no limit.
+            </value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.TotalKdfIterationLimit">
+            <summary>
+              Gets or sets the total iteration limit for the Key Derivation Function (KDF) calculations.
+            </summary>
+            <value>
+              The total iteration limit for the Key Derivation Function (KDF) calculations,
+              or <see langword="null" /> for no limit.
+            </value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.MaxKeys">
+            <summary>
+              Gets or sets the maximum number of keys permitted.
+            </summary>
+            <value>
+              The maximum number of keys permitted, or <see langword="null" /> for no maximum.
+            </value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.MaxCertificates">
+            <summary>
+              Gets or sets the maximum number of certificates permitted.
+            </summary>
+            <value>
+              The maximum number of certificates permitted, or <see langword="null" /> for no maximum.
+            </value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.PreserveStorageProvider">
+            <summary>
+              Gets or sets a value indicating whether to preserve the storage provider.
+            </summary>
+            <value>
+              <see langword="true" /> to respect the storage provider identifier for a
+              private key; <see langword="false" /> to ignore the storage provider
+              information and use the system defaults.
+              The default is <see langword="false" />.
+            </value>
+            <remarks>
+              Storage Provider values from the PFX are only processed on the
+              Microsoft Windows family of operating systems.
+              This property has no effect on non-Windows systems.
+            </remarks>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.PreserveKeyName">
+            <summary>
+              Gets or sets a value indicating whether to preserve the key name.
+            </summary>
+            <value>
+              <see langword="true" /> to respect the key name identifier for a
+              private key; <see langword="false" /> to ignore the key name
+              information and use a randomly generated identifier.
+              The default is <see langword="false" />.
+            </value>
+            <remarks>
+              Key name identifier values from the PFX are only processed on the
+              Microsoft Windows family of operating systems.
+              This property has no effect on non-Windows systems.
+            </remarks>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.PreserveCertificateAlias">
+            <summary>
+              Gets or sets a value indicating whether to preserve the certificate alias,
+              also known as the friendly name.
+            </summary>
+            <value>
+              <see langword="true" /> to respect the alias for a
+              certificate; <see langword="false" /> to ignore the alias
+              information.
+              The default is <see langword="false" />.
+            </value>
+            <remarks>
+              Certificate alias values from the PFX are only processed on the
+              Microsoft Windows family of operating systems.
+              This property has no effect on non-Windows systems.
+            </remarks>
+            <seealso cref="P:System.Security.Cryptography.X509Certificates.X509Certificate2.FriendlyName"/>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.PreserveUnknownAttributes">
+            <summary>
+              Gets or sets a value indicating whether to preserve unknown attributes.
+            </summary>
+            <value>
+              <see langword="true" /> to keep any attributes of a certificate or
+              private key that are not described by another property on this type intact
+              when invoking the system PKCS#12/PFX loader;
+              <see langword="false" /> to remove the unknown attributes prior to invoking
+              the system loader.
+              The default is <see langword="false" />.
+            </value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.IgnorePrivateKeys">
+            <summary>
+              Gets or sets a value indicating whether to ignore private keys.
+            </summary>
+            <value>
+              <see langword="true" /> to skip loading private keys;
+              <see langword="false" /> to load both certificates and private keys.
+              The default is <see langword="false" />.
+            </value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.IgnoreEncryptedAuthSafes">
+            <summary>
+              Gets or sets a value indicating whether to ignore encrypted authentication safes.
+            </summary>
+            <value>
+              <see langword="true" /> to skip over encrypted PFX AuthSafe values;
+              <see langword="false" /> to decrypt encrypted PFX AuthSafe values to process their
+              contents.
+              The default is <see langword="false" />.
+            </value>
+        </member>
+        <member name="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.AllowDuplicateAttributes">
+            <summary>
+              Gets or sets a value indicating whether duplicate attributes are permitted.
+            </summary>
+            <value>
+              <see langword="true" /> to permit duplicate attributes;
+              <see langword="false" /> to fail loading when duplicate attributes are found.
+              The default is <see langword="false" />.
+            </value>
+        </member>
+        <member name="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+            <summary>
+              The exception that is thrown when importing a PKCS#12/PFX has failed
+              due to violating a specified limit.
+            </summary>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException.#ctor(System.String)">
+            <summary>
+              Initializes a new instance of the <see cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException"/>
+              class.
+            </summary>
+            <param name="propertyName">
+              The name of the property representing the limit that was exceeded.
+            </param>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadCertificate(System.ReadOnlySpan{System.Byte})">
+            <summary>
+              Loads a single X.509 certificate from <paramref name="data"/>, in either the PEM
+              or DER encoding.
+            </summary>
+            <param name="data">The data to load.</param>
+            <returns>
+              The certificate loaded from <paramref name="data"/>.
+            </returns>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              The data did not load as a valid X.509 certificate.
+            </exception>
+            <remarks>
+              This method only loads plain certificates, which are identified as
+              <see cref="F:System.Security.Cryptography.X509Certificates.X509ContentType.Cert" /> by <see cref="M:System.Security.Cryptography.X509Certificates.X509Certificate2.GetCertContentType(System.Byte[])"/>
+            </remarks>
+            <seealso cref="M:System.Security.Cryptography.X509Certificates.X509Certificate2.GetCertContentType(System.String)"/>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadCertificate(System.Byte[])">
+            <summary>
+              Loads a single X.509 certificate from <paramref name="data"/>, in either the PEM
+              or DER encoding.
+            </summary>
+            <param name="data">The data to load.</param>
+            <returns>
+              The certificate loaded from <paramref name="data"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="data"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              The data did not load as a valid X.509 certificate.
+            </exception>
+            <remarks>
+              This method only loads plain certificates, which are identified as
+              <see cref="F:System.Security.Cryptography.X509Certificates.X509ContentType.Cert" /> by <see cref="M:System.Security.Cryptography.X509Certificates.X509Certificate2.GetCertContentType(System.Byte[])"/>
+            </remarks>
+            <seealso cref="M:System.Security.Cryptography.X509Certificates.X509Certificate2.GetCertContentType(System.String)"/>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadCertificateFromFile(System.String)">
+            <summary>
+              Loads a single X.509 certificate (in either the PEM or DER encoding)
+              from the specified file.
+            </summary>
+            <param name="path">The path of the file to open.</param>
+            <returns>
+              The loaded certificate.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="path"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              The data did not load as a valid X.509 certificate.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+              An error occurred while loading the specified file.
+            </exception>
+            <remarks>
+              This method only loads plain certificates, which are identified as
+              <see cref="F:System.Security.Cryptography.X509Certificates.X509ContentType.Cert" /> by <see cref="M:System.Security.Cryptography.X509Certificates.X509Certificate2.GetCertContentType(System.String)"/>
+            </remarks>
+            <seealso cref="M:System.Security.Cryptography.X509Certificates.X509Certificate2.GetCertContentType(System.String)"/>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12(System.Byte[],System.String,System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Loads the provided data as a PKCS#12 PFX and extracts a certificate.
+            </summary>
+            <param name="data">The data to load.</param>
+            <param name="password">The password to decrypt the contents of the PFX.</param>
+            <param name="keyStorageFlags">
+              A bitwise combination of the enumeration values that control where and how to
+              import the private key associated with the returned certificate.
+            </param>
+            <param name="loaderLimits">
+              Limits to apply when loading the PFX.  A <see langword="null" /> value, the default,
+              is equivalent to <see cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults"/>.
+            </param>
+            <returns>The loaded certificate.</returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="data"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <paramref name="keyStorageFlags"/> contains a value, or combination of values,
+              that is not valid.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+              <paramref name="keyStorageFlags"/> contains a value that is not valid for the
+              current platform.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+              The PKCS#12/PFX violated one or more constraints of <paramref name="loaderLimits"/>.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              An error occurred while loading the PKCS#12/PFX.
+            </exception>
+            <remarks>
+              A PKCS#12/PFX can contain multiple certificates.
+              Using the ordering that the certificates appear in the results of
+              <see cref="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12Collection(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Char},System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)" />,
+              this method returns the first
+              certificate where <see cref="P:System.Security.Cryptography.X509Certificates.X509Certificate2.HasPrivateKey" /> is
+              <see langword="true" />.
+              If no certificates have associated private keys, then the first
+              certificate is returned.
+              If the PKCS#12/PFX contains no certificates, a
+              <see cref="T:System.Security.Cryptography.CryptographicException" /> is thrown.
+            </remarks>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Char},System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Loads the provided data as a PKCS#12 PFX and extracts a certificate.
+            </summary>
+            <param name="data">The data to load.</param>
+            <param name="password">The password to decrypt the contents of the PFX.</param>
+            <param name="keyStorageFlags">
+              A bitwise combination of the enumeration values that control where and how to
+              import the private key associated with the returned certificate.
+            </param>
+            <param name="loaderLimits">
+              Limits to apply when loading the PFX.  A <see langword="null" /> value, the default,
+              is equivalent to <see cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults"/>.
+            </param>
+            <returns>The loaded certificate.</returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="data"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <paramref name="keyStorageFlags"/> contains a value, or combination of values,
+              that is not valid.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+              <paramref name="keyStorageFlags"/> contains a value that is not valid for the
+              current platform.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+              The PKCS#12/PFX violated one or more constraints of <paramref name="loaderLimits"/>.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              An error occurred while loading the PKCS#12/PFX.
+            </exception>
+            <remarks>
+              A PKCS#12/PFX can contain multiple certificates.
+              Using the ordering that the certificates appear in the results of
+              <see cref="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12Collection(System.Byte[],System.String,System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)" />,
+              this method returns the first
+              certificate where <see cref="P:System.Security.Cryptography.X509Certificates.X509Certificate2.HasPrivateKey" /> is
+              <see langword="true" />.
+              If no certificates have associated private keys, then the first
+              certificate is returned.
+              If the PKCS#12/PFX contains no certificates, a
+              <see cref="T:System.Security.Cryptography.CryptographicException" /> is thrown.
+            </remarks>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12FromFile(System.String,System.String,System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Opens the specified file, reads the contents as a PKCS#12 PFX and extracts a certificate.
+            </summary>
+            <param name="path">The path of the file to open.</param>
+            <returns>
+              The loaded certificate.
+            </returns>
+            <param name="password">The password to decrypt the contents of the PFX.</param>
+            <param name="keyStorageFlags">
+              A bitwise combination of the enumeration values that control where and how to
+              import the private key associated with the returned certificate.
+            </param>
+            <param name="loaderLimits">
+              Limits to apply when loading the PFX.  A <see langword="null" /> value, the default,
+              is equivalent to <see cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults"/>.
+            </param>
+            <returns>The loaded certificate.</returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="path"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <paramref name="keyStorageFlags"/> contains a value, or combination of values,
+              that is not valid.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+              <paramref name="keyStorageFlags"/> contains a value that is not valid for the
+              current platform.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+              The PKCS#12/PFX violated one or more constraints of <paramref name="loaderLimits"/>.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              An error occurred while loading the PKCS#12/PFX.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+              An error occurred while loading the specified file.
+            </exception>
+            <remarks>
+              A PKCS#12/PFX can contain multiple certificates.
+              Using the ordering that the certificates appear in the results of
+              <see cref="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12CollectionFromFile(System.String,System.String,System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)" />,
+              this method returns the first
+              certificate where <see cref="P:System.Security.Cryptography.X509Certificates.X509Certificate2.HasPrivateKey" /> is
+              <see langword="true" />.
+              If no certificates have associated private keys, then the first
+              certificate is returned.
+              If the PKCS#12/PFX contains no certificates, a
+              <see cref="T:System.Security.Cryptography.CryptographicException" /> is thrown.
+            </remarks>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12FromFile(System.String,System.ReadOnlySpan{System.Char},System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Opens the specified file, reads the contents as a PKCS#12 PFX and extracts a certificate.
+            </summary>
+            <param name="path">The path of the file to open.</param>
+            <returns>
+              The loaded certificate.
+            </returns>
+            <param name="password">The password to decrypt the contents of the PFX.</param>
+            <param name="keyStorageFlags">
+              A bitwise combination of the enumeration values that control where and how to
+              import the private key associated with the returned certificate.
+            </param>
+            <param name="loaderLimits">
+              Limits to apply when loading the PFX.  A <see langword="null" /> value, the default,
+              is equivalent to <see cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults"/>.
+            </param>
+            <returns>The loaded certificate.</returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="path"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <paramref name="keyStorageFlags"/> contains a value, or combination of values,
+              that is not valid.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+              <paramref name="keyStorageFlags"/> contains a value that is not valid for the
+              current platform.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+              The PKCS#12/PFX violated one or more constraints of <paramref name="loaderLimits"/>.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              An error occurred while loading the PKCS#12/PFX.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+              An error occurred while loading the specified file.
+            </exception>
+            <remarks>
+              A PKCS#12/PFX can contain multiple certificates.
+              Using the ordering that the certificates appear in the results of
+              <see cref="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12CollectionFromFile(System.String,System.ReadOnlySpan{System.Char},System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)" />,
+              this method returns the first
+              certificate where <see cref="P:System.Security.Cryptography.X509Certificates.X509Certificate2.HasPrivateKey" /> is
+              <see langword="true" />.
+              If no certificates have associated private keys, then the first
+              certificate is returned.
+              If the PKCS#12/PFX contains no certificates, a
+              <see cref="T:System.Security.Cryptography.CryptographicException" /> is thrown.
+            </remarks>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12Collection(System.Byte[],System.String,System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Loads the provided data as a PKCS#12 PFX and returns a collection of
+              all of the certificates therein.
+            </summary>
+            <param name="data">The data to load.</param>
+            <param name="password">The password to decrypt the contents of the PFX.</param>
+            <param name="keyStorageFlags">
+              A bitwise combination of the enumeration values that control where and how to
+              import the private key associated with the returned certificate.
+            </param>
+            <param name="loaderLimits">
+              Limits to apply when loading the PFX.  A <see langword="null" /> value, the default,
+              is equivalent to <see cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults"/>.
+            </param>
+            <returns>A collection of the certificates loaded from the input.</returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="data"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <paramref name="keyStorageFlags"/> contains a value, or combination of values,
+              that is not valid.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+              <paramref name="keyStorageFlags"/> contains a value that is not valid for the
+              current platform.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+              The PKCS#12/PFX violated one or more constraints of <paramref name="loaderLimits"/>.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              An error occurred while loading the PKCS#12/PFX.
+            </exception>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12Collection(System.ReadOnlySpan{System.Byte},System.ReadOnlySpan{System.Char},System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Loads the provided data as a PKCS#12 PFX and returns a collection of
+              all of the certificates therein.
+            </summary>
+            <param name="data">The data to load.</param>
+            <param name="password">The password to decrypt the contents of the PFX.</param>
+            <param name="keyStorageFlags">
+              A bitwise combination of the enumeration values that control where and how to
+              import the private key associated with the returned certificate.
+            </param>
+            <param name="loaderLimits">
+              Limits to apply when loading the PFX.  A <see langword="null" /> value, the default,
+              is equivalent to <see cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults"/>.
+            </param>
+            <returns>A collection of the certificates loaded from the input.</returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="data"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <paramref name="keyStorageFlags"/> contains a value, or combination of values,
+              that is not valid.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+              <paramref name="keyStorageFlags"/> contains a value that is not valid for the
+              current platform.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+              The PKCS#12/PFX violated one or more constraints of <paramref name="loaderLimits"/>.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              An error occurred while loading the PKCS#12/PFX.
+            </exception>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12CollectionFromFile(System.String,System.String,System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Opens the specified file, reads the contents as a PKCS#12 PFX and extracts a certificate.
+              Loads the provided data as a PKCS#12 PFX and returns a collection of
+              all of the certificates therein.
+            </summary>
+            <param name="path">The path of the file to open.</param>
+            <returns>
+              The loaded certificate.
+            </returns>
+            <param name="password">The password to decrypt the contents of the PFX.</param>
+            <param name="keyStorageFlags">
+              A bitwise combination of the enumeration values that control where and how to
+              import the private key associated with the returned certificate.
+            </param>
+            <param name="loaderLimits">
+              Limits to apply when loading the PFX.  A <see langword="null" /> value, the default,
+              is equivalent to <see cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults"/>.
+            </param>
+            <returns>The loaded certificate.</returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="path"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <paramref name="keyStorageFlags"/> contains a value, or combination of values,
+              that is not valid.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+              <paramref name="keyStorageFlags"/> contains a value that is not valid for the
+              current platform.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+              The PKCS#12/PFX violated one or more constraints of <paramref name="loaderLimits"/>.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              An error occurred while loading the PKCS#12/PFX.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+              An error occurred while loading the specified file.
+            </exception>
+        </member>
+        <member name="M:System.Security.Cryptography.X509Certificates.X509CertificateLoader.LoadPkcs12CollectionFromFile(System.String,System.ReadOnlySpan{System.Char},System.Security.Cryptography.X509Certificates.X509KeyStorageFlags,System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits)">
+            <summary>
+              Opens the specified file, reads the contents as a PKCS#12 PFX and extracts a certificate.
+              Loads the provided data as a PKCS#12 PFX and returns a collection of
+              all of the certificates therein.
+            </summary>
+            <param name="path">The path of the file to open.</param>
+            <returns>
+              The loaded certificate.
+            </returns>
+            <param name="password">The password to decrypt the contents of the PFX.</param>
+            <param name="keyStorageFlags">
+              A bitwise combination of the enumeration values that control where and how to
+              import the private key associated with the returned certificate.
+            </param>
+            <param name="loaderLimits">
+              Limits to apply when loading the PFX.  A <see langword="null" /> value, the default,
+              is equivalent to <see cref="P:System.Security.Cryptography.X509Certificates.Pkcs12LoaderLimits.Defaults"/>.
+            </param>
+            <returns>The loaded certificate.</returns>
+            <exception cref="T:System.ArgumentNullException">
+              <paramref name="path"/> is <see langword="null" />.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+              <paramref name="keyStorageFlags"/> contains a value, or combination of values,
+              that is not valid.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+              <paramref name="keyStorageFlags"/> contains a value that is not valid for the
+              current platform.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.X509Certificates.Pkcs12LoadLimitExceededException">
+              The PKCS#12/PFX violated one or more constraints of <paramref name="loaderLimits"/>.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">
+              An error occurred while loading the PKCS#12/PFX.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+              An error occurred while loading the specified file.
+            </exception>
+        </member>
+        <member name="T:System.Security.Cryptography.IncrementalHash">
+            <summary>
+            Provides support for computing a hash or HMAC value incrementally across several segments.
+            </summary>
+        </member>
+        <member name="P:System.Security.Cryptography.IncrementalHash.AlgorithmName">
+            <summary>
+            Get the name of the algorithm being performed.
+            </summary>
+        </member>
+        <member name="M:System.Security.Cryptography.IncrementalHash.AppendData(System.Byte[])">
+            <summary>
+            Append the entire contents of <paramref name="data"/> to the data already processed in the hash or HMAC.
+            </summary>
+            <param name="data">The data to process.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="data"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ObjectDisposedException">The object has already been disposed.</exception>
+        </member>
+        <member name="M:System.Security.Cryptography.IncrementalHash.AppendData(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Append <paramref name="count"/> bytes of <paramref name="data"/>, starting at <paramref name="offset"/>,
+            to the data already processed in the hash or HMAC.
+            </summary>
+            <param name="data">The data to process.</param>
+            <param name="offset">The offset into the byte array from which to begin using data.</param>
+            <param name="count">The number of bytes in the array to use as data.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="data"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="offset"/> is out of range. This parameter requires a non-negative number.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="count"/> is out of range. This parameter requires a non-negative number less than
+                the <see cref="P:System.Array.Length"/> value of <paramref name="data"/>.
+                </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="count"/> is greater than
+                <paramref name="data"/>.<see cref="P:System.Array.Length"/> - <paramref name="offset"/>.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">The object has already been disposed.</exception>
+        </member>
+        <member name="M:System.Security.Cryptography.IncrementalHash.GetHashAndReset">
+            <summary>
+            Retrieve the hash or HMAC for the data accumulated from prior calls to
+            <see cref="M:System.Security.Cryptography.IncrementalHash.AppendData(System.Byte[])"/>, and return to the state the object
+            was in at construction.
+            </summary>
+            <returns>The computed hash or HMAC.</returns>
+            <exception cref="T:System.ObjectDisposedException">The object has already been disposed.</exception>
+        </member>
+        <member name="M:System.Security.Cryptography.IncrementalHash.Dispose">
+            <summary>
+            Release all resources used by the current instance of the
+            <see cref="T:System.Security.Cryptography.IncrementalHash"/> class.
+            </summary>
+        </member>
+        <member name="M:System.Security.Cryptography.IncrementalHash.CreateHash(System.Security.Cryptography.HashAlgorithmName)">
+            <summary>
+            Create an <see cref="T:System.Security.Cryptography.IncrementalHash"/> for the algorithm specified by <paramref name="hashAlgorithm"/>.
+            </summary>
+            <param name="hashAlgorithm">The name of the hash algorithm to perform.</param>
+            <returns>
+            An <see cref="T:System.Security.Cryptography.IncrementalHash"/> instance ready to compute the hash algorithm specified
+            by <paramref name="hashAlgorithm"/>.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="hashAlgorithm"/>.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name"/> is <c>null</c>, or
+                the empty string.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="hashAlgorithm"/> is not a known hash algorithm.</exception>
+        </member>
+        <member name="M:System.Security.Cryptography.IncrementalHash.CreateHMAC(System.Security.Cryptography.HashAlgorithmName,System.Byte[])">
+            <summary>
+            Create an <see cref="T:System.Security.Cryptography.IncrementalHash"/> for the Hash-based Message Authentication Code (HMAC)
+            algorithm utilizing the hash algorithm specified by <paramref name="hashAlgorithm"/>, and a
+            key specified by <paramref name="key"/>.
+            </summary>
+            <param name="hashAlgorithm">The name of the hash algorithm to perform within the HMAC.</param>
+            <param name="key">
+                The secret key for the HMAC. The key can be any length, but a key longer than the output size
+                of the hash algorithm specified by <paramref name="hashAlgorithm"/> will be hashed (using the
+                algorithm specified by <paramref name="hashAlgorithm"/>) to derive a correctly-sized key. Therefore,
+                the recommended size of the secret key is the output size of the hash specified by
+                <paramref name="hashAlgorithm"/>.
+            </param>
+            <returns>
+            An <see cref="T:System.Security.Cryptography.IncrementalHash"/> instance ready to compute the hash algorithm specified
+            by <paramref name="hashAlgorithm"/>.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="hashAlgorithm"/>.<see cref="P:System.Security.Cryptography.HashAlgorithmName.Name"/> is <c>null</c>, or
+                the empty string.
+            </exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException"><paramref name="hashAlgorithm"/> is not a known hash algorithm.</exception>
         </member>
         <member name="T:System.Runtime.InteropServices.LibraryImportAttribute">
             <summary>
@@ -580,7 +1188,7 @@
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Custom">
             <summary>
-            Indicates the user is suppling a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
+            Indicates the user is supplying a specific marshaller in <see cref="P:System.Runtime.InteropServices.LibraryImportAttribute.StringMarshallingCustomType"/>.
             </summary>
         </member>
         <member name="F:System.Runtime.InteropServices.StringMarshalling.Utf8">
@@ -592,6 +1200,126 @@
             <summary>
             Use the platform-provided UTF-16 marshaller.
             </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.OSPlatformAttribute">
+            <summary>
+            Base type for all platform-specific API attributes.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.TargetPlatformAttribute">
+            <summary>
+            Records the platform that the project targeted.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.Versioning.SupportedOSPlatformAttribute">
+             <summary>
+             Records the operating system (and minimum version) that supports an API. Multiple attributes can be
+             applied to indicate support on multiple operating systems.
+             </summary>
+             <remarks>
+             Callers can apply a <see cref="T:System.Runtime.Versioning.SupportedOSPlatformAttribute" />
+             or use guards to prevent calls to APIs on unsupported operating systems.
+            
+             A given platform should only be specified once.
+             </remarks>
+        </member>
+        <member name="T:System.Runtime.Versioning.UnsupportedOSPlatformAttribute">
+            <summary>
+            Marks APIs that were removed in a given operating system version.
+            </summary>
+            <remarks>
+            Primarily used by OS bindings to indicate APIs that are only available in
+            earlier versions.
+            </remarks>
+        </member>
+        <member name="T:System.Runtime.Versioning.ObsoletedOSPlatformAttribute">
+            <summary>
+            Marks APIs that were obsoleted in a given operating system version.
+            </summary>
+            <remarks>
+            Primarily used by OS bindings to indicate APIs that should not be used anymore.
+            </remarks>
+        </member>
+        <member name="T:System.Runtime.Versioning.SupportedOSPlatformGuardAttribute">
+             <summary>
+             Annotates a custom guard field, property or method with a supported platform name and optional version.
+             Multiple attributes can be applied to indicate guard for multiple supported platforms.
+             </summary>
+             <remarks>
+             Callers can apply a <see cref="T:System.Runtime.Versioning.SupportedOSPlatformGuardAttribute" /> to a field, property or method
+             and use that field, property or method in a conditional or assert statements in order to safely call platform specific APIs.
+            
+             The type of the field or property should be boolean, the method return type should be boolean in order to be used as platform guard.
+             </remarks>
+        </member>
+        <member name="T:System.Runtime.Versioning.UnsupportedOSPlatformGuardAttribute">
+             <summary>
+             Annotates the custom guard field, property or method with an unsupported platform name and optional version.
+             Multiple attributes can be applied to indicate guard for multiple unsupported platforms.
+             </summary>
+             <remarks>
+             Callers can apply a <see cref="T:System.Runtime.Versioning.UnsupportedOSPlatformGuardAttribute" /> to a field, property or method
+             and use that  field, property or method in a conditional or assert statements as a guard to safely call APIs unsupported on those platforms.
+            
+             The type of the field or property should be boolean, the method return type should be boolean in order to be used as platform guard.
+             </remarks>
+        </member>
+        <member name="P:System.SR.Arg_CryptographyException">
+            <summary>Error occurred during a cryptographic operation.</summary>
+        </member>
+        <member name="P:System.SR.Argument_InvalidOffLen">
+            <summary>Offset and length were out of bounds for the array or count is greater than the number of elements from index to the end of the source collection.</summary>
+        </member>
+        <member name="P:System.SR.Argument_InvalidValue">
+            <summary>Value was invalid.</summary>
+        </member>
+        <member name="P:System.SR.ArgumentOutOfRange_Generic_MustBeNonNegativeNonZero">
+            <summary>{0} ('{1}') must be a non-negative and non-zero value.</summary>
+        </member>
+        <member name="P:System.SR.ArgumentOutOfRange_NeedNonNegNum">
+            <summary>Non-negative number required.</summary>
+        </member>
+        <member name="P:System.SR.ArgumentOutOfRange_KOut_Too_Large">
+            <summary>The number of bytes requested is too large. The number of bytes produced by SP800108HmacCounterKdf cannot exceed 536,870,911 bytes.</summary>
+        </member>
+        <member name="P:System.SR.Argument_EmptyString">
+            <summary>The value cannot be an empty string.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_AlgKdfRequiresChars">
+            <summary>The KDF for algorithm '{0}' requires a char-based password input.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_AlgorithmNotSupported">
+            <summary>Algorithm '{0}' is not supported on this platform.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_Der_Invalid_Encoding">
+            <summary>ASN1 corrupted data.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_HashAlgorithmNameNullOrEmpty">
+            <summary>The hash algorithm name cannot be null or empty.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_NotValidPublicOrPrivateKey">
+            <summary>Key is not a valid public or private key.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_Pfx_BadPassword">
+            <summary>The certificate data cannot be read with the provided password, the password may be incorrect.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_Pfx_NoCertificates">
+            <summary>The provided PFX data contains no certificates.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_Pkcs8_EncryptedReadFailed">
+            <summary>The EncryptedPrivateKeyInfo structure was decoded but was not successfully interpreted, the password may be incorrect.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_UnknownAlgorithmIdentifier">
+            <summary>The algorithm identified by '{0}' is unknown, not valid for the requested usage, or was not handled.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_UnknownHashAlgorithm">
+            <summary>'{0}' is not a known hash algorithm.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_X509_PKCS12_LimitExceeded">
+            <summary>The PKCS#12/PFX violated the '{0}' limit.</summary>
+        </member>
+        <member name="P:System.SR.Cryptography_X509_PKCS12_LimitsReadOnly">
+            <summary>This Pkcs12LoaderLimits object has been made read-only and can no longer be modified.</summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
             <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
@@ -681,7 +1409,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
             <summary>Initializes the attribute with the specified return value condition and a field or property member.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field or property member will not be null.
             </param>
             <param name="member">
             The field or property member that is promised to be not-null.
@@ -690,7 +1418,7 @@
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
             <summary>Initializes the attribute with the specified return value condition and list of field and property members.</summary>
             <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
+            The return value condition. If the method returns this value, the associated field and property members will not be null.
             </param>
             <param name="members">
             The list of field and property members that are promised to be not-null.
@@ -701,6 +1429,148 @@
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
             <summary>Gets field or property member names.</summary>
+        </member>
+        <member name="T:Microsoft.Win32.SafeHandles.SafeCertStoreHandle">
+            <summary>
+            SafeHandle for the HCERTSTORE handle defined by crypt32.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Win32.SafeHandles.SafeCrypt32Handle`1">
+            <summary>
+            Base class for safe handles representing NULL-based pointers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Win32.SafeHandles.SafeHandleCache`1">
+            <summary>Provides a cache for special instances of SafeHandles.</summary>
+            <typeparam name="T">Specifies the type of SafeHandle.</typeparam>
+        </member>
+        <member name="M:Microsoft.Win32.SafeHandles.SafeHandleCache`1.GetInvalidHandle(System.Func{`0})">
+            <summary>
+            Gets a cached, invalid handle.  As the instance is cached, it should either never be Disposed
+            or it should override <see cref="M:System.Runtime.InteropServices.SafeHandle.Dispose(System.Boolean)"/> to prevent disposal when the
+            instance represents an invalid handle: <see cref="P:System.Runtime.InteropServices.SafeHandle.IsInvalid"/> returns <see language="true"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Win32.SafeHandles.SafeHandleCache`1.IsCachedInvalidHandle(System.Runtime.InteropServices.SafeHandle)">
+            <summary>Gets whether the specified handle is invalid handle.</summary>
+            <param name="handle">The handle to compare.</param>
+            <returns>true if <paramref name="handle"/> is invalid handle; otherwise, false.</returns>
+        </member>
+        <member name="T:Microsoft.Win32.SafeHandles.SafePasswordHandle">
+            <summary>
+            Wrap a string- or SecureString-based object. A null value indicates IntPtr.Zero should be used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Win32.SafeHandles.SafePasswordHandle.PasswordProvided">
+            <summary>
+            This is used to track if a password was explicitly provided.
+            A null/empty password is a valid password.
+            </summary>
+        </member>
+        <member name="M:Interop.BCrypt.Emit(System.Byte[],System.Int32@,System.Byte[])">
+            <summary>
+                Append "value" to the data already in blob.
+            </summary>
+        </member>
+        <member name="M:Interop.BCrypt.EmitByte(System.Byte[],System.Int32@,System.Byte,System.Int32)">
+            <summary>
+                Append "value" to the data already in blob.
+            </summary>
+        </member>
+        <member name="M:Interop.BCrypt.EmitBigEndian(System.Byte[],System.Int32@,System.Int32)">
+            <summary>
+                Append "value" in big Endian format to the data already in blob.
+            </summary>
+        </member>
+        <member name="M:Interop.BCrypt.Consume(System.Byte[],System.Int32@,System.Int32)">
+            <summary>
+                Peel off the next "count" bytes in blob and return them in a byte array.
+            </summary>
+        </member>
+        <member name="M:Interop.BCrypt.Consume(System.ReadOnlySpan{System.Byte},System.Int32@,System.Int32)">
+            <summary>
+                Peel off the next "count" bytes in blob and return them in a byte array.
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.KeyBlobMagicNumber">
+            <summary>
+                Magic numbers identifying blob types
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.KeyBlobType">
+            <summary>
+                Well known key blob types
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.BCRYPT_RSAKEY_BLOB">
+            <summary>
+                The BCRYPT_RSAKEY_BLOB structure is used as a header for an RSA public key or private key BLOB in memory.
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.BCRYPT_DSA_KEY_BLOB">
+            <summary>
+                The BCRYPT_DSA_KEY_BLOB structure is used as a v1 header for a DSA public key or private key BLOB in memory.
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.BCRYPT_DSA_KEY_BLOB_V2">
+            <summary>
+                The BCRYPT_DSA_KEY_BLOB structure is used as a v2 header for a DSA public key or private key BLOB in memory.
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.BCRYPT_ECCKEY_BLOB">
+            <summary>
+                The BCRYPT_ECCKEY_BLOB structure is used as a header for an ECC public key or private key BLOB in memory.
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.ECC_CURVE_TYPE_ENUM">
+            <summary>
+                Represents the type of curve.
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.ECC_CURVE_ALG_ID_ENUM">
+            <summary>
+                Represents the algorithm that was used with Seed to generate A and B.
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.BCRYPT_ECCFULLKEY_BLOB">
+            <summary>
+                Used as a header to curve parameters including the public and potentially private key.
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.CngBufferDescriptors">
+            <summary>
+                NCrypt or BCrypt buffer descriptors
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.BCryptBuffer">
+            <summary>
+                BCrypt buffer
+            </summary>
+        </member>
+        <member name="F:Interop.BCrypt.BCRYPTBUFFER_VERSION">
+            <summary>
+                The version of BCryptBuffer
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.BCryptBufferDesc">
+            <summary>
+                Contains a set of generic CNG buffers.
+            </summary>
+        </member>
+        <member name="F:Interop.BCrypt.BCRYPT_ECC_PARAMETER_HEADER_V1">
+            <summary>
+                The version of BCRYPT_ECC_PARAMETER_HEADER
+            </summary>
+        </member>
+        <member name="T:Interop.BCrypt.BCRYPT_ECC_PARAMETER_HEADER">
+            <summary>
+                Used as a header to curve parameters.
+            </summary>
+        </member>
+        <member name="M:Interop.Kernel32.GetMessage(System.Int32)">
+            <summary>
+                Returns a string message for the specified Win32 error code.
+            </summary>
         </member>
     </members>
 </doc>

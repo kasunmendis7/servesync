@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServeSync.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,6 +46,12 @@ namespace ServeSync
         private void frmMain_Load(object sender, EventArgs e)
         {
             lblUser.Text = MainClass.USER;
+        }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            AddControls(new frmCategoryView());
+
         }
     }
 }

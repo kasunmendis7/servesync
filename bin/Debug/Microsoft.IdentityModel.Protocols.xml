@@ -162,7 +162,7 @@
             <summary>
             Obtains an updated version of Configuration.
             </summary>
-            <returns>Configuration of type T.</returns>
+            <returns>Configuration of type <typeparamref name="T"/>.</returns>
             <remarks>If the time since the last call is less than <see cref="P:Microsoft.IdentityModel.Tokens.BaseConfigurationManager.AutomaticRefreshInterval"/> then <see cref="M:Microsoft.IdentityModel.Protocols.IConfigurationRetriever`1.GetConfigurationAsync(System.String,Microsoft.IdentityModel.Protocols.IDocumentRetriever,System.Threading.CancellationToken)"/> is not called and the current Configuration is returned.</remarks>
         </member>
         <member name="M:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.GetConfigurationAsync(System.Threading.CancellationToken)">
@@ -170,23 +170,55 @@
             Obtains an updated version of Configuration.
             </summary>
             <param name="cancel">CancellationToken</param>
-            <returns>Configuration of type T.</returns>
-            <remarks>If the time since the last call is less than <see cref="P:Microsoft.IdentityModel.Tokens.BaseConfigurationManager.AutomaticRefreshInterval"/> then <see cref="M:Microsoft.IdentityModel.Protocols.IConfigurationRetriever`1.GetConfigurationAsync(System.String,Microsoft.IdentityModel.Protocols.IDocumentRetriever,System.Threading.CancellationToken)"/> is not called and the current Configuration is returned.</remarks>
+            <returns>Configuration of type <typeparamref name="T"/>.</returns>
+            <remarks>
+            <para>
+            If the time since the last call is less than <see cref="P:Microsoft.IdentityModel.Tokens.BaseConfigurationManager.AutomaticRefreshInterval"/>
+            then <see cref="M:Microsoft.IdentityModel.Protocols.IConfigurationRetriever`1.GetConfigurationAsync(System.String,Microsoft.IdentityModel.Protocols.IDocumentRetriever,System.Threading.CancellationToken)"/> is not called and the current Configuration is returned.
+            By default, this method blocks until the configuration is retrieved the first time. After the configuration was retrieved once,
+            updates will happen in the background. Failures to retrieve the configuration on the background thread will be logged.
+            </para>
+            <para>
+            If this operation is configured to be blocking through the switch 'Switch.Microsoft.IdentityModel.UpdateConfigAsBlocking'
+            then this method will block each time the configuration needs to be updated or hasn't been retrieved. If the configuration
+            cannot be initially retrieved an exception will be thrown. If the configuration has been retrieved, but cannot be updated,
+            then the exception will be logged and the current configuration will be returned.
+            </para>
+            <para>
+            By using the app context switch you choose what works best for you when there is a signing key update:
+            either block requests from being validated until the new key is retrieved, or allow requests to be validated
+            with the current key until the new key is retrieved. If blocking, a service receiving high concurrent request
+            may experience thread starvation.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.UpdateCurrentConfiguration">
+            <summary>
+            This should be called when the configuration needs to be updated either from RequestRefresh or AutomaticRefresh
+            The Caller should first check the state checking state using:
+              if (Interlocked.CompareExchange(ref _configurationRetrieverState, ConfigurationRetrieverRunning, ConfigurationRetrieverIdle) == ConfigurationRetrieverIdle).
+            </summary>
         </member>
         <member name="M:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.GetBaseConfigurationAsync(System.Threading.CancellationToken)">
             <summary>
             Obtains an updated version of Configuration.
             </summary>
             <param name="cancel">CancellationToken</param>
-            <returns>Configuration of type BaseConfiguration    .</returns>
+            <returns>Configuration of type BaseConfiguration.</returns>
             <remarks>If the time since the last call is less than <see cref="P:Microsoft.IdentityModel.Tokens.BaseConfigurationManager.AutomaticRefreshInterval"/> then <see cref="M:Microsoft.IdentityModel.Protocols.IConfigurationRetriever`1.GetConfigurationAsync(System.String,Microsoft.IdentityModel.Protocols.IDocumentRetriever,System.Threading.CancellationToken)"/> is not called and the current Configuration is returned.</remarks>
         </member>
         <member name="M:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.RequestRefresh">
             <summary>
-            Requests that then next call to <see cref="M:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.GetConfigurationAsync"/> obtain new configuration.
-            <para>If it is a first force refresh or the last refresh was greater than <see cref="P:Microsoft.IdentityModel.Tokens.BaseConfigurationManager.RefreshInterval"/> then the next call to <see cref="M:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.GetConfigurationAsync"/> will retrieve new configuration.</para>
+            Triggers updating metadata when:
+            <para>1. Called the first time.</para>
+            <para>2. The time between when this method was called and DateTimeOffset.Now is greater than <see cref="P:Microsoft.IdentityModel.Tokens.BaseConfigurationManager.RefreshInterval"/>.</para>
             <para>If <see cref="P:Microsoft.IdentityModel.Tokens.BaseConfigurationManager.RefreshInterval"/> == <see cref="F:System.TimeSpan.MaxValue"/> then this method does nothing.</para>
             </summary>
+            <remarks>
+            If the strategy is configured to be blocking through the switch 'Switch.Microsoft.IdentityModel.UpdateConfigAsBlocking',
+            then this method will not update the configuration, instead it will request the next call to <see cref="M:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.GetConfigurationAsync"/>
+            should request new configuration.
+            </remarks>
         </member>
         <member name="F:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.DefaultAutomaticRefreshInterval">
             <summary>
@@ -206,6 +238,11 @@
         <member name="F:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.MinimumRefreshInterval">
             <summary>
             1 second is the minimum time interval that must pass for <see cref="F:Microsoft.IdentityModel.Protocols.ConfigurationManager`1.MinimumRefreshInterval"/> to  obtain new configuration.
+            </summary>
+        </member>
+        <member name="F:Microsoft.IdentityModel.Protocols.ConfigurationManager`1._refreshRequested">
+            <summary>
+            Only used to track the type of request for telemetry.
             </summary>
         </member>
         <member name="T:Microsoft.IdentityModel.Protocols.ConfigurationValidationResult">
@@ -285,6 +322,16 @@
             Requires Https secure channel for sending requests.. This is turned ON by default for security reasons. It is RECOMMENDED that you do not allow retrieval from http addresses by default.
             </summary>
         </member>
+        <member name="P:Microsoft.IdentityModel.Protocols.HttpDocumentRetriever.HttpVersion">
+            <summary>
+            If set, specifies the desired HTTP version to use for the requests.
+            Otherwise, HttpClient.DefaultRequestVersion is used.
+            </summary>
+            <remarks>
+            HttpRequestMessage.Version specifies the desired request version.
+            HttpRequestMessage.VersionPolicy defines how strictly the HTTP version should be adhered to, allowing for fallback to other versions if necessary.
+            </remarks>
+        </member>
         <member name="M:Microsoft.IdentityModel.Protocols.HttpDocumentRetriever.GetDocumentAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Returns a task which contains a string converted from remote document when completed, by using the provided address.
@@ -292,6 +339,13 @@
             <param name="address">Location of document</param>
             <param name="cancel">A cancellation token that can be used by other objects or threads to receive notice of cancellation. <see cref="T:System.Threading.CancellationToken"/></param>
             <returns>Document as a string</returns>
+        </member>
+        <member name="M:Microsoft.IdentityModel.Protocols.HttpDocumentRetriever.ApplyHttpVersionAndPolicy(System.Net.Http.HttpClient,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Applies the HTTP version and version policy to the <see cref="T:System.Net.Http.HttpRequestMessage"/>.
+            </summary>
+            <param name="httpClient">The <see cref="T:System.Net.Http.HttpClient"/> used to obtain the default values.</param>
+            <param name="message">The <see cref="T:System.Net.Http.HttpRequestMessage"/> where to apply the version and policy.</param>
         </member>
         <member name="T:Microsoft.IdentityModel.Protocols.IConfigurationManager`1">
             <summary>
