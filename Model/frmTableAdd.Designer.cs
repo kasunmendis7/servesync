@@ -1,6 +1,6 @@
 ﻿namespace ServeSync.Model
 {
-    partial class frmCategoryAdd
+    partial class frmTableAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -34,8 +34,8 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -56,9 +56,9 @@
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::ServeSync.Properties.Resources.icons8_medium_priority_1003;
+            this.guna2PictureBox1.Image = global::ServeSync.Properties.Resources.icons8_table_1001;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(23, 12);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(12, 12);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(75, 75);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -72,13 +72,12 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(104, 36);
+            this.label1.Location = new System.Drawing.Point(93, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 25);
+            this.label1.Size = new System.Drawing.Size(96, 25);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Add Category";
+            this.label1.Text = "Add Table";
             this.label1.Visible = false;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // guna2Panel2
             // 
@@ -108,7 +107,7 @@
             this.btnClose.Size = new System.Drawing.Size(111, 35);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
             // 
             // btnSave
             // 
@@ -127,17 +126,7 @@
             this.btnSave.Size = new System.Drawing.Size(111, 35);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(37, 144);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 19);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Name : ";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // txtName
             // 
@@ -151,24 +140,33 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtName.Location = new System.Drawing.Point(41, 166);
+            this.txtName.Location = new System.Drawing.Point(35, 165);
             this.txtName.Name = "txtName";
             this.txtName.PlaceholderText = "";
             this.txtName.SelectedText = "";
             this.txtName.Size = new System.Drawing.Size(308, 36);
             this.txtName.TabIndex = 0;
-            this.txtName.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(31, 143);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 19);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Name : ";
             // 
             // guna2MessageDialog1
             // 
             this.guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
-            this.guna2MessageDialog1.Caption = "RM";
-            this.guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
-            this.guna2MessageDialog1.Parent = this;
-            this.guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            this.guna2MessageDialog1.Caption = null;
+            this.guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            this.guna2MessageDialog1.Parent = null;
+            this.guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             this.guna2MessageDialog1.Text = null;
             // 
-            // frmCategoryAdd
+            // frmTableAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,9 +176,9 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2Panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmCategoryAdd";
+            this.Name = "frmTableAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCategoryAdd";
+            this.Text = "frmTableAdd";
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
@@ -195,11 +193,11 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         public System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private System.Windows.Forms.Label label2;
         public Guna.UI2.WinForms.Guna2TextBox txtName;
-        public Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
+        private System.Windows.Forms.Label label2;
+        public Guna.UI2.WinForms.Guna2Button btnClose;
+        private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
     }
 }

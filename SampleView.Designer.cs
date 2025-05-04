@@ -33,6 +33,7 @@
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.btnAdd = new Guna.UI2.WinForms.Guna2ImageButton();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -105,6 +106,15 @@
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // guna2MessageDialog1
+            // 
+            this.guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            this.guna2MessageDialog1.Caption = "ServeSync";
+            this.guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
+            this.guna2MessageDialog1.Parent = null;
+            this.guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            this.guna2MessageDialog1.Text = null;
+            // 
             // SampleView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -131,5 +141,6 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         public Guna.UI2.WinForms.Guna2TextBox txtSearch;
         public Guna.UI2.WinForms.Guna2ImageButton btnAdd;
+        public Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
     }
 }

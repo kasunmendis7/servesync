@@ -1,35 +1,28 @@
-﻿using System;
+﻿using ServeSync.Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
-using ServeSync.Model;
-
 
 namespace ServeSync.View
 {
-    public partial class frmCategoryView : ServeSync.SampleView
+    public partial class frmTableView : SampleView
     {
-        // This constructor initializes the form and calls the GetData method to load data into the DataGridView.
-        public frmCategoryView()
+        public frmTableView()
         {
-            // InitializeComponent() is an auto-generated method that sets up the form's components (buttons, textboxes, etc.).
             InitializeComponent();
-            // Call the GetData method to load data into the DataGridView when the form is loaded.
-            GetData();
         }
-        
+
         public void GetData()
         {
             // This method constructs a SQL query to select all categories where the category name matches the search text.
-            string qry = "SELECT * FROM category WHERE category_name LIKE '%"+ txtSearch.Text +"%' ";
+            string qry = "SELECT * FROM tables WHERE table_name LIKE '%" + txtSearch.Text + "%' ";
             // The following lines define the columns to be displayed in the DataGridView.
             ListBox lb = new ListBox();
             // dgvid is the ID of the category.
@@ -40,27 +33,28 @@ namespace ServeSync.View
             MainClass.LoadData(qry, guna2DataGridView1, lb);
         }
 
-        private void frmCategoryView_Load(object sender, EventArgs e)
+        private void frnTableView_Load(object sender, EventArgs e)
         {
             GetData();
         }
+
         // This method is called when the "Add" button is clicked. It opens the frmCategoryAdd form to add a new category.
         public override void btnAdd_Click(object sender, EventArgs e)
         {
             // Creates a new instance of the frmCategoryAdd form.
-            // frmCategoryAdd frm = new frmCategoryAdd();
+            // frmTableAdd frm = new frmTableAdd();
             // Opens the Category Add dialog (frmCategoryAdd) modally.
             // When the user closes that dialog(after saving), calls GetData() again to refresh the list.
             // frm.ShowDialog();
             // Calls the GetData method to refresh the DataGridView with the latest data.
-            MainClass.BlurBackground(new frmCategoryAdd());
+
+            MainClass.BlurBackground(new frmTableAdd());
             GetData();
         }
         // Any time the text changes in txtSearch, it re‑runs GetData(), giving you live filtering of the grid.
         public override void txtSearch_TextChanged(object sender, EventArgs e)
         {
             GetData();
-
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -95,7 +89,7 @@ namespace ServeSync.View
                     // Reads the category_id from the current row of the DataGridView.
                     int id = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["dgvid"].Value);
                     // Executes a SQL DELETE query to remove the selected category from the database.
-                    string qry = "DELETE FROM category WHERE category_id = " + id + "";
+                    string qry = "DELETE FROM tables WHERE table_id = " + id + "";
                     Hashtable ht = new Hashtable(); // Creates a new Hashtable to store the parameters for the SQL query.
                     MainClass.SQL(qry, ht); // Executes the SQL query using the MainClass.SQL method.
                     guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;

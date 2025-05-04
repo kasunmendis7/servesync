@@ -1,6 +1,6 @@
 ﻿namespace ServeSync.View
 {
-    partial class frmCategoryView
+    partial class frmTableView
     {
         /// <summary>
         /// Required designer variable.
@@ -39,12 +39,6 @@
             this.dgvdel = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            this.label2.Size = new System.Drawing.Size(121, 25);
-            this.label2.Text = "Category List";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnAdd
             // 
@@ -93,8 +87,8 @@
             this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowTemplate.Height = 35;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(880, 403);
-            this.guna2DataGridView1.TabIndex = 4;
+            this.guna2DataGridView1.Size = new System.Drawing.Size(883, 386);
+            this.guna2DataGridView1.TabIndex = 5;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
@@ -165,14 +159,16 @@
             this.dgvdel.ReadOnly = true;
             this.dgvdel.Width = 50;
             // 
-            // frmCategoryView
+            // frmTableView
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(933, 588);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(921, 545);
             this.Controls.Add(this.guna2DataGridView1);
-            this.Name = "frmCategoryView";
+            this.Name = "frmTableView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCategoryView";
+            this.Text = "frnTableView";
+            this.Load += new System.EventHandler(this.frnTableView_Load);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
             this.Controls.SetChildIndex(this.guna2DataGridView1, 0);

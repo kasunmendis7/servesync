@@ -16,3 +16,9 @@ CREATE TABLE category
  category_id INT PRIMARY KEY IDENTITY,
  category_name VARCHAR(50)
  )
+
+ CREATE TABLE tables
+ (
+    table_id INT PRIMARY KEY IDENTITY,
+    table_name VARCHAR(15)
+ )
