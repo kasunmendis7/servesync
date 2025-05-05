@@ -100,5 +100,22 @@ namespace ServeSync.View
                 }
             }
         }
+
+        public void txtSearch_TextChanged_1(object sender, EventArgs e)
+        {
+            // This method constructs a SQL query to select all categories where the category name matches the search text.
+            string qry = "SELECT product_id, product_name, product_price, c.category_id, c.category_name FROM products p inner join category c on p.category_id = c.category_id WHERE product_name LIKE '%" + txtSearch.Text + "%' ";
+            // The following lines define the columns to be displayed in the DataGridView.
+            ListBox lb = new ListBox();
+            // dgvid is the ID of the category.
+            lb.Items.Add(dgvid);
+            // dgvName is the name of the category.
+            lb.Items.Add(dgvName);
+            // LoadData executes the query, gets a DataTable, and then sets each grid column’s DataPropertyName to the corresponding field name before binding.
+            lb.Items.Add(dgvPrice);
+            lb.Items.Add(dgvCategoryID);
+            lb.Items.Add(dgvCategory);
+            MainClass.LoadData(qry, guna2DataGridView1, lb);
+        }
     }
 }

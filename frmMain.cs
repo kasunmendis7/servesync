@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ServeSync.Model;
 
 namespace ServeSync
 {
@@ -85,6 +86,12 @@ namespace ServeSync
         private void btnProduct_Click(object sender, EventArgs e)
         {
             AddControls(new frmProductView());
+        }
+
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            frmPOS frm = new frmPOS();
+            frm.Show();
         }
     }
 }
