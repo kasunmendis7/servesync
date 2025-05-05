@@ -201,6 +201,12 @@
     <Compile Include="Model\frmCategoryAdd.Designer.cs">
       <DependentUpon>frmCategoryAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\frmProductAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\frmProductAdd.Designer.cs">
+      <DependentUpon>frmProductAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\frmStaffAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,12 @@
     <Compile Include="View\frmCategoryView.Designer.cs">
       <DependentUpon>frmCategoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmProductView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmProductView.Designer.cs">
+      <DependentUpon>frmProductView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmStaffView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Model\frmCategoryAdd.resx">
       <DependentUpon>frmCategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\frmProductAdd.resx">
+      <DependentUpon>frmProductAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model\frmStaffAdd.resx">
       <DependentUpon>frmStaffAdd.cs</DependentUpon>
@@ -286,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmCategoryView.resx">
       <DependentUpon>frmCategoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmProductView.resx">
+      <DependentUpon>frmProductView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmStaffView.resx">
       <DependentUpon>frmStaffView.cs</DependentUpon>
@@ -413,6 +431,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-table-1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quality-control_7023024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quality-control_128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

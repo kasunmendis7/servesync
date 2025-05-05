@@ -30,3 +30,19 @@ CREATE TABLE category
 	staff_phone VARCHAR(50 ),
 	staff_role VARCHAR(50)
 );
+
+CREATE TABLE products
+(
+	product_id INT PRIMARY KEY IDENTITY,
+	product_name VARCHAR(50),
+	product_price FLOAT,
+	category_id INT,
+	product_image IMAGE
+);
+
+ALTER TABLE products
+ADD CONSTRAINT fk_category
+FOREIGN KEY (category_id) 
+REFERENCES category(category_id);
+
+SELECT product_id, product_name, product_price, c.category_id, c.category_name FROM products p inner join category c on p.category_id = c.category_id;
