@@ -22,3 +22,11 @@ CREATE TABLE category
     table_id INT PRIMARY KEY IDENTITY,
     table_name VARCHAR(15)
  )
+
+ CREATE TABLE staff
+(
+	staff_id INT PRIMARY KEY IDENTITY,
+	staff_name VARCHAR(50),
+	staff_phone VARCHAR(50 ),
+	staff_role VARCHAR(50)
+);

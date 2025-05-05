@@ -76,5 +76,10 @@ namespace ServeSync
         {
             AddControls(new frmTableView());
         }
+
+        private void btnStaff_Click(object sender, EventArgs e)
+        {
+            AddControls(new frmStaffView());
+        }
     }
 }
