@@ -116,3 +116,5 @@ D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.exe
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.pdb
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.frmPOS.resources
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.ucProduct.resources
+D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.frmTableSelect.resources
+D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.frmWaiterSelect.resources

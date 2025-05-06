@@ -46,3 +46,27 @@ FOREIGN KEY (category_id)
 REFERENCES category(category_id);
 
 SELECT product_id, product_name, product_price, c.category_id, c.category_name FROM products p inner join category c on p.category_id = c.category_id;
+
+CREATE TABLE table_main
+(
+	main_id INT PRIMARY KEY IDENTITY,
+	a_date DATE,
+	a_time VARCHAR(15),
+	table_name VARCHAR(10),
+	waiter_name VARCHAR(15),
+	status VARCHAR(15),
+	order_type VARCHAR(15),
+	total FLOAT,
+	received FLOAT,
+	change FLOAT,
+);
+
+CREATE TABLE table_details 
+(
+	detail_id INT PRIMARY KEY IDENTITY,
+	main_id INT,
+	product_id INT,
+	quantity INT,
+	price FLOAT,
+	amount FLOAT
+);
