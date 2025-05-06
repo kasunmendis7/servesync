@@ -118,3 +118,4 @@ D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.frmPOS
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.ucProduct.resources
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.frmTableSelect.resources
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.frmWaiterSelect.resources
+D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.View.frmKitchenView.resources
