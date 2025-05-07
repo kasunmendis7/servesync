@@ -121,3 +121,4 @@ D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.csproj.Up2Da
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.exe
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.pdb
 D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.frmCheckout.resources
+D:\Workspaces\Visual Studio Workspace\ServeSync\obj\Debug\ServeSync.Model.frmAddCustomer.resources

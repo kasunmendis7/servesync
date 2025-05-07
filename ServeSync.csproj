@@ -195,6 +195,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainClass.cs" />
+    <Compile Include="Model\frmAddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\frmAddCustomer.Designer.cs">
+      <DependentUpon>frmAddCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\frmBillList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\frmAddCustomer.resx">
+      <DependentUpon>frmAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model\frmBillList.resx">
       <DependentUpon>frmBillList.cs</DependentUpon>
@@ -542,6 +551,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-bill-100-orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-name-tag-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

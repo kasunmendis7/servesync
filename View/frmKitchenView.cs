@@ -101,7 +101,7 @@ namespace ServeSync.View
                 for (int j = 0; j < dt2.Rows.Count; j++)
                 {
                     Label lbl5 = new Label();
-                    lbl5.ForeColor = Color.White;
+                    lbl5.ForeColor = Color.Black;
                     lbl5.Margin = new Padding(10, 5, 3, 0);
                     lbl5.AutoSize = true;
 

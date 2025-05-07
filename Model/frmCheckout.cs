@@ -44,7 +44,7 @@ namespace ServeSync.Model
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            
             string qry = @"UPDATE table_main SET total=@total, received = @received, [change] = @change, status='Paid' WHERE main_id = @main_id";
 
             Hashtable ht = new Hashtable();
