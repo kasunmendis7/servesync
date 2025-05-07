@@ -58,7 +58,7 @@ CREATE TABLE table_main
 	order_type VARCHAR(15),
 	total FLOAT,
 	received FLOAT,
-	change FLOAT,
+	change FLOAT
 );
 
 CREATE TABLE table_details 

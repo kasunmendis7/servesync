@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -239,7 +240,7 @@ namespace ServeSync.Model
             }
             else // Update
             {
-                qry1 = @"UPDATE table_main SET VALUES status=@status, total=@total, received=@received, change=@change WHERE main_id = @id";
+                qry1 = @"UPDATE table_main SET status=@status, total=@total, received=@received, change=@change WHERE main_id = @id";
 
             }
 
@@ -281,16 +282,94 @@ namespace ServeSync.Model
                 cmd2.ExecuteNonQuery(); 
                 if (MainClass.con.State == ConnectionState.Open) { MainClass.con.Close(); }
 
-                guna2MessageDialog1.Show("Saved successfully");
-                MainID = 0;
-                detail_id = 0;
-                guna2DataGridView1.Rows.Clear();
-                lblTable.Text = "";
-                lblWaiter.Text = "";
-                lblTable.Visible = false;
-                lblWaiter.Visible = false;
-                label3.Text = "0.00";
+                
             }
+            guna2MessageDialog1.Show("Saved successfully");
+            MainID = 0;
+            detail_id = 0;
+            guna2DataGridView1.Rows.Clear();
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            label3.Text = "0.00";
+        }
+        public int id = 0;
+        private void btnBill_Click(object sender, EventArgs e)
+        {
+            frmBillList frm = new frmBillList();
+            MainClass.BlurBackground(frm);
+
+            if (frm.main_id > 0)
+            {
+                id = frm.main_id;
+                LoadEntries();
+            }
+        }
+
+        private void LoadEntries()
+        {
+            string qry = @"SELECT * FROM table_main m 
+                                INNER JOIN table_details d ON m.main_id = d.main_id
+                                INNER JOIN products p ON p.product_id = d.product_id
+                                WHERE m.main_id = " + id + "";
+            SqlCommand cmd2 = new SqlCommand(qry, MainClass.con);
+            DataTable dt2 = new DataTable();
+            SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+            da2.Fill(dt2);
+
+            if (dt2.Rows[0]["order_type"].ToString() == "Delivery")
+            {
+                btnDelivery.Checked = true;
+                lblWaiter.Visible = false;
+                lblTable.Visible = false;
+            }
+            else if (dt2.Rows[0]["order_type"].ToString() == "Take Away")
+            {
+                btnTake.Checked = true;
+                lblWaiter.Visible = false;
+                lblTable.Visible = false;
+            }else
+            {
+                btnDine.Checked = true;
+                lblWaiter.Visible = true;
+                lblTable.Visible = true;
+            }
+
+            guna2DataGridView1.Rows.Clear();
+
+            foreach (DataRow item in dt2.Rows)
+            {
+                lblTable.Text = dt2.Rows[0]["table_name"].ToString();
+                lblWaiter.Text = dt2.Rows[0]["waiter_name"].ToString();
+
+                string detailID = item["detail_id"].ToString();
+                string proID = item["product_id"].ToString();
+                string proName = item["product_name"].ToString();
+                string qty = item["quantity"].ToString();
+                string price = item["price"].ToString();
+                string amount = item["amount"].ToString();
+
+                object[] obj = { 0, detailID, proID, proName, qty, price, amount };
+                guna2DataGridView1.Rows.Add(obj);
+            }
+            GetTotal();
+        }
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            frmCheckout frm = new frmCheckout();
+            frm.main_id = id;
+            frm.amt = Convert.ToDouble(label3.Text);
+            MainClass.BlurBackground(frm);
+
+            MainID = 0;
+            guna2DataGridView1.Rows.Clear();
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            label3.Text = "0.00";
         }
     }
 }
